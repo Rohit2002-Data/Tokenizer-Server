@@ -22,3 +22,14 @@ async def tokenize(request: Request):
         "input_ids": inputs["input_ids"].tolist(),
         "attention_mask": inputs["attention_mask"].tolist()
     }
+
+@app.post("/decode/")
+async def decode(request: Request):
+    data = await request.json()
+    output_ids = data.get("output_ids")
+
+    if not output_ids:
+        return {"decoded_text": ""}
+
+    decoded_text = tokenizer.decode(output_ids[0], skip_special_tokens=True)
+    return {"decoded_text": decoded_text}
