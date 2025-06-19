@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from transformers import AutoTokenizer
 
-tokenizer = AutoTokenizer.from_pretrained("sshleifer/tiny-gpt2")
+tokenizer = AutoTokenizer.from_pretrained("distilgpt2")
 
 app = FastAPI()
 
